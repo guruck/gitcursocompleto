@@ -19,23 +19,6 @@ git add .
 git add -a
 git add --all
 
-# remove um ou mais arquivos ou todos
-# --cached opção para 'unstage' e remover caminhos apenas do indice
-git rm --cached <file>
-git rm --cached -rf .
-# sem a opção --cached vai apagar literalmente o arquivo
-git rm 'd*'
-git rm 'd/*'
-
-# salva uma versão do arquivo até o momento do commit
-# é possivel comentar em multiplas linhas se não encerrar o (") caso precise detalhar melhor o commit
-git commit -m "versao teste"
-
-# descarta as alterações após uma versão do arquivo até o momento do ultimo commit
-git restore <file>
-# opção para 'unstage' -> remove a alteração da área preparada para o commit
-git restore --staged <file>
-
 # exibe o que há de modificado entre as versões do arquivo "modified" e o ultimo conhecido, se houver na área "staged" a comparação é realizada por lá, senão é realizada na "unmodified"
 git diff
 # para realizar a comparação entre a "staged" e "unmodified"
@@ -56,13 +39,35 @@ git log --shortstat
 git commit --amend -m "alteracao da mensagem do commit"
 git commit --amend --no-edit
 
+# DESFAZENDO ALTERAÇÕES
+# reverte / navega entre os commits
+git checkout <numero do commit>
+git checkout main
+git checkout <file>
+git checkout .
 
+# remove arquivos não rastreados
+git clean -f
 
+# remove um ou mais arquivos ou todos
+# --cached opção para 'unstage' e remover caminhos apenas do indice se não houver um HEAD
+git rm --cached <file>
+git rm --cached -rf .
+# sem a opção --cached vai apagar literalmente o arquivo
+git rm 'd*'
+git rm 'd/*'
 
+# salva uma versão do arquivo até o momento do commit
+# é possivel comentar em multiplas linhas se não encerrar o (") caso precise detalhar melhor o commit
+git commit -m "versao teste"
 
+# descarta as alterações após uma versão do arquivo até o momento do ultimo commit (precisa de um HEAD para funcionar)
+git restore <file>
+# opção para 'unstage' -> remove a alteração da área preparada para o commit
+git restore --staged <file>
 
-
-
+# remove todas as alterações realizadas voltando ao ultimo commit (trackeds)
+git reset --hard
 
 
 
