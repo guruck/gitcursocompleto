@@ -69,6 +69,39 @@ git restore --staged <file>
 # remove todas as alterações realizadas voltando ao ultimo commit (trackeds)
 git reset --hard
 
+# para parar de rastrear um arquivo caso adicionado após no gitignore ou rastrear
+git update-index --skip-worktree <file>
+git update-index --no-skip-worktree <file>
 
+# realizar uma copia de um repositorio local/remoto
+git clone repositorio novoRepositorio
+git clone https://github.com/usuario/gitcursocompleto.git
+
+# verificar se o repositório está vinculado a um remoto ou não
+git remote -v
+## origin  https://github.com/usuario/gitcursocompleto.git (fetch)  -> busca informações
+## origin  https://github.com/usuario/gitcursocompleto.git (push)   -> envia informações
+
+# adicionar links de repositorios remotos
+git remote add <alias> <url do repositorio>
+git remote add origin https://github.com/usuario/gitcursocompleto.git
+
+# alterar links de repositorios remotos
+git remote set-url <alias> <url do repositorio>
+git remote set-url origin https://github.com/usuario/gitcursocompleto.git
+
+# enviar commit para repositorio remoto
+git push 
+
+# restaurar do repositorio remoto
+git pull
+
+----------------
+gerar chave SSH
+----------------
+ssh-keygen
+cd ~/.ssh/
+start ~/.ssh/
+id_rsa.pub <- chave gerada
 
 
