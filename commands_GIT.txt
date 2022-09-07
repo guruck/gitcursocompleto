@@ -1,0 +1,28 @@
+# lista as configurações globais
+git config --global -l
+
+# gerenciamento das configurações globais
+git config --global user.name "Fulano de Tal"
+git config --global user.email "fulano@de.tal"
+git config --global init.defaultBranch main
+
+# inicializa o versionamento de um repositório
+git init
+
+# exibe o status do repositório
+git status
+
+# adiciona um ou mais arquivos ou todos (., -a, --all)
+git add <file>
+git add .
+git add -a
+git add --all
+
+# remove um ou mais arquivos ou todos
+# --cached opção para 'unstage' e remover caminhos apenas do indice
+git rm --cached <file>
+git rm --cached -rf .
+# sem a opção --cached vai apagar literalmente o arquivo
+git rm 'd*'
+git rm 'd/*'
+
