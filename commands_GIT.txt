@@ -41,3 +41,22 @@ git diff
 git diff --cached
 git diff --staged
 
+# exibe os comits de forma decrescente
+git log
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
