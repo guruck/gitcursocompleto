@@ -35,7 +35,9 @@ git restore <file>
 # opção para 'unstage' -> remove a alteração da área preparada para o commit
 git restore --staged <file>
 
-# exibe o que há de modificado entre as versões do arquivo local e o ultimo conhecido, se houver na área "staged" a comparação é realizada por lá, senão é realizada na "unmodified"
+# exibe o que há de modificado entre as versões do arquivo "modified" e o ultimo conhecido, se houver na área "staged" a comparação é realizada por lá, senão é realizada na "unmodified"
 git diff
-
+# para realizar a comparação entre a "staged" e "unmodified"
+git diff --cached
+git diff --staged
 
