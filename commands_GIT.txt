@@ -43,11 +43,16 @@ git diff --staged
 
 # exibe os comits de forma decrescente
 git log
+git log --oneline
+git log -2
+# exibe as modificações do ultimo commit
+git log -p -1
+# exibe um resumo dos arquivos alterados nos commits
+git log --stat
+git log --shortstat
 
-
-
-
-
+# modifica a mensagem do commit (na realidade o commit cria um novo commit)
+git commit --amend -m "alteracao da mensagem do commit"
 
 
 
