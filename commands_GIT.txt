@@ -26,3 +26,16 @@ git rm --cached -rf .
 git rm 'd*'
 git rm 'd/*'
 
+# salva uma versão do arquivo até o momento do commit
+# é possivel comentar em multiplas linhas se não encerrar o (") caso precise detalhar melhor o commit
+git commit -m "versao teste"
+
+# descarta as alterações após uma versão do arquivo até o momento do ultimo commit
+git restore <file>
+# opção para 'unstage' -> remove a alteração da área preparada para o commit
+git restore --staged <file>
+
+# exibe o que há de modificado entre as versões do arquivo local e o ultimo conhecido, se houver na área "staged" a comparação é realizada por lá, senão é realizada na "unmodified"
+git diff
+
+
