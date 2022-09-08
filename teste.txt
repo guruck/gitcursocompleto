@@ -1,5 +1,6 @@
 testando aqui
 criando conflito
-
+commit em outra HEAD
+resolvido, adicionado os dois comentarios conflitantes e mais uma anotação aqui
 
 
