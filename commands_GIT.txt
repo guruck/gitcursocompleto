@@ -103,10 +103,18 @@ git branch --list
 # criar um ramo no projeto
 git branch <nome do ramo>
 git checkout -b <nome do ramo>
+git switch -c <nome do ramo>
 
 # trocar para um ramo no projeto
 git checkout <nome do ramo>
+git switch <nome do ramo>
 
+# trocar para um ramo no projeto desfazendo alterações realizadas na branch anterior
+# caso tenha adicionado e não commitado, as alterações serão perdidas
+git checkout -f <nome do ramo>
+
+# trocar para o ramo anterior usado no projeto
+git switch - 
 
 
 
