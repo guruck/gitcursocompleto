@@ -28,6 +28,7 @@ git diff --staged
 # exibe os comits de forma decrescente
 git log
 git log --oneline
+git log <branch> --oneline
 git log -2
 # exibe as modificações do ultimo commit
 git log -p -1
@@ -92,6 +93,8 @@ git remote set-url origin https://github.com/usuario/gitcursocompleto.git
 
 # enviar commit para repositorio remoto
 git push 
+git push --set-upstream origin <nome do ramo>
+git push -u origin <nome do ramo>
 
 # restaurar do repositorio remoto
 git pull
@@ -105,6 +108,10 @@ git branch <nome do ramo>
 git checkout -b <nome do ramo>
 git switch -c <nome do ramo>
 
+# renomear um ramo no projeto
+git branch -m <branchAnterior> <novaBranch>
+git branch -m <novaBranch> (caso esteja na branch a ser renomeada)
+
 # trocar para um ramo no projeto
 git checkout <nome do ramo>
 git switch <nome do ramo>
@@ -116,7 +123,16 @@ git checkout -f <nome do ramo>
 # trocar para o ramo anterior usado no projeto
 git switch - 
 
+# remover um ramo no projeto LOCAL
+git branch -d <nome do ramo>
+git branch -D <nome do ramo>
 
+# remover um ramo no projeto REMOTO
+## quando executado a remoção remota, é necessário excluir de todos os demais locais distribuidos para garantir que um PUSH não retorne a branch
+git push --delete origin <nome do ramo>
+
+# realizar MERGE de um ramo no projeto REMOTO
+git merge <nome do ramo>
 
 
 
