@@ -131,11 +131,12 @@ git branch -D <nome do ramo>
 ## quando executado a remoção remota, é necessário excluir de todos os demais locais distribuidos para garantir que um PUSH não retorne a branch
 git push --delete origin <nome do ramo>
 
-# realizar MERGE de um ramo no projeto REMOTO
+# realizar MERGE de um ramo no projeto
 git merge <nome do ramo>
 
-
-
+# localizar ramo que não foram ou foram MERGEadas no projeto respectivamente
+git branch --no-merged
+git branch --merged
 
 ----------------
 gerar chave SSH
