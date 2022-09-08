@@ -96,6 +96,23 @@ git push
 # restaurar do repositorio remoto
 git pull
 
+# listar os ramos no projeto
+git branch 
+git branch --list
+
+# criar um ramo no projeto
+git branch <nome do ramo>
+git checkout -b <nome do ramo>
+
+# trocar para um ramo no projeto
+git checkout <nome do ramo>
+
+
+
+
+
+
+
 ----------------
 gerar chave SSH
 ----------------
