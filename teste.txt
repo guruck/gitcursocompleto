@@ -3,4 +3,97 @@ criando conflito
 commit em outra HEAD
 resolvido, adicionado os dois comentarios conflitantes e mais uma anotação aqui
 
+----------
 
+
+INSERT INTO `db_teste_base`.`owners` (`status_conta`,`login`,`sistema`,`instancia`,`cod_responsavel`,`nome_responsavel`,`tipo_class`,`sigla`,`cobrar`,`motivo`,`indicador`,`mes`) VALUES ('regular','teste','windows','dominio.homol','123456','tomas edson','tipo C','CRC','NÃO','conta do meu truta','SIM',8),('irregular','tomate','windows','dominio.dev','321456','patati patata','tipo D','LDL','NÃO','excessão','NÃO',8)
+;
+
+REPLACE INTO `db_teste_base`.`owners` 
+(`status_conta`,`login`,`sistema`,`instancia`,`cod_responsavel`,`nome_responsavel`,`tipo_class`,`sigla`,`cobrar`,`motivo`,`indicador`,`mes`) 
+VALUES 
+('regular','teste2','windows','dominio.homol','111111','tomas edson','tipo C','CRC','NÃO','conta do meu truta','SIM',3),
+('irregular','tomate2','linux','dominio.dev','222222','patati patata','tipo D','LDL','NÃO','excessão','NÃO',3),
+('regular','teste2','windows','dominio.homol','111111','tomas edson','tipo C','CRC','NÃO','conta do meu truta','SIM',3),
+('irregular','tomate2','linux','dominio.dev','222222','patati patata','tipo A','LDL','NÃO','excessão','NÃO',3)
+;
+
+REPLACE INTO `db_teste_invent`.`owners` SELECT * FROM `db_teste_base`.`owners`;
+
+
+-- essa consulta tras os itens que devem ser inseridos pois não existem na definitiva
+SELECT bse.*
+FROM `db_teste_base`.`owners` AS bse
+LEFT JOIN `db_teste_invent`.`owners` AS inv
+ON inv.`login`=bse.`login` 
+  AND inv.`sistema`=bse.`sistema` 
+  AND inv.`instancia`=bse.`instancia` 
+WHERE inv.`mes` IS NULL
+;
+
+-- essa consulta tras os itens que devem ser atualizados pois ja existem na definitiva
+SELECT bse.*
+FROM `db_teste_base`.`owners` AS bse
+LEFT JOIN `db_teste_invent`.`owners` AS inv
+ON inv.`login`=bse.`login` 
+  AND inv.`sistema`=bse.`sistema` 
+  AND inv.`instancia`=bse.`instancia` 
+WHERE inv.`mes` IS NOT NULL
+AND inv.`cod_responsavel`!=bse.`cod_responsavel`
+;
+
+
+UPDATE `db_teste_base`.`owners` AS bse
+LEFT JOIN `db_teste_invent`.`owners` AS inv
+ON inv.`login`=bse.`login` 
+  AND inv.`sistema`=bse.`sistema` 
+  AND inv.`instancia`=bse.`instancia` 
+SET inv.`cod_responsavel`=bse.`cod_responsavel`,inv.`nome_responsavel`=bse.`nome_responsavel`, inv.`mes`=bse.`mes`
+WHERE inv.mes IS NOT NULL 
+-- AND inv.`status_conta`!=bse.`status_conta` 
+ AND inv.`cod_responsavel`!=bse.`cod_responsavel` 
+-- AND inv.`tipo_class`!=bse.`tipo_class` 
+-- AND inv.`sigla`!=bse.`sigla` 
+-- AND inv.`cobrar`!=bse.`cobrar` 
+-- AND inv.`motivo`!=bse.`motivo` 
+-- AND inv.`indicador`!=bse.`indicador` 
+-- AND inv.`mes`!=bse.`mes` 
+;
+
+-- gerando HASH no MySQL para facilitar o indice
+
+UPDATE `db_teste_base`.`owners` AS bse
+SET bse.`hash`=SHA2(CONCAT(bse.`login`,bse.`sistema`,bse.`instancia`),256)
+WHERE 1=1;
+
+SELECT SHA2(CONCAT(bse.`login`,bse.`sistema`,bse.`instancia`),256) AS 'HASH', bse.`login` 
+FROM `db_teste_base`.`owners` AS bse
+;
+
+-- criando tabela com o campo para armazenar o HASH
+CREATE TABLE `owners` (
+	`hash` CHAR(64) NULL,
+	`status_conta` VARCHAR(100) NOT NULL,
+	`login` VARCHAR(100) NOT NULL,
+	`sistema` VARCHAR(60) NOT NULL,
+	`instancia` VARCHAR(60) NOT NULL,
+	`cod_responsavel` VARCHAR(15) DEFAULT NULL,
+	`nome_responsavel` VARCHAR(150) DEFAULT NULL,
+	`tipo_class` VARCHAR(60) DEFAULT NULL,
+	`sigla` VARCHAR(10) DEFAULT NULL,
+	`cobrar` VARCHAR(10) DEFAULT NULL,
+	`motivo` VARCHAR(100) DEFAULT NULL,
+	`indicador` VARCHAR(10) DEFAULT NULL,
+	`mes` INT DEFAULT NULL,
+	PRIMARY KEY (`login`,`sistema`,`instancia`) USING BTREE,
+	INDEX `FKs4s3er9gbbjb8` (`login`,`sistema`,`instancia`) USING BTREE,
+	INDEX `FKc6j5wj4r9gbbj` (`login`,`sistema`) USING BTREE,
+	INDEX `FKs4s3er4r9gbbj` (`hash`) USING BTREE
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=3
+;
+
+CREATE TABLE IF NOT EXISTS `db_teste_invent`.`owners` LIKE `db_teste_base`.`owners`;
+INSERT INTO `db_teste_invent`.`owners` SELECT * FROM `db_teste_base`.`owners`;
