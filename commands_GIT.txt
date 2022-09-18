@@ -142,6 +142,20 @@ git merge --abort
 git branch --no-merged
 git branch --merged
 
+# criando e listando tags
+git tag <nome da tag> 
+git tag <nome da tag> <id commit>
+git tag -a -m "mensagem" <nome da tag> 
+git tag -a -m "mensagem" <nome da tag> <id commit>
+
+git show <nome da tag>
+git tag -l
+git tag -n
+
+# enviando tags para remoto
+git push origin <nome da tag>
+git push --tags
+
 
 ----------------
 gerar chave SSH
