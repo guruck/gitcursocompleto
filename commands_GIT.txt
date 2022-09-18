@@ -156,6 +156,26 @@ git tag -n
 git push origin <nome da tag>
 git push --tags
 
+# removendo tags
+git tag -d <nome da tag> 
+git push --delete origin <nome da tag>
+
+#trabalhando com stash
+git stash
+git stash apply
+git stash list
+
+#aplica um stash já removendo da lista
+git stash pop
+git stash pop <posicao do stash>
+
+#remover um stash da lista
+git stash drop
+git stash drop <posicao do stash>
+
+#criar branch apartir do stash
+git stash branch <nome da branch> <posicao do stash>
+
 
 ----------------
 gerar chave SSH
