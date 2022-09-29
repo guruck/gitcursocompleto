@@ -176,6 +176,9 @@ git stash drop <posicao do stash>
 #criar branch apartir do stash
 git stash branch <nome da branch> <posicao do stash>
 
+#criar remover alias 
+git config --global alias.ll 'log --oneline'
+git config --global --unset alias.ll
 
 ----------------
 gerar chave SSH
