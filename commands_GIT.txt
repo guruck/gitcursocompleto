@@ -180,6 +180,13 @@ git stash branch <nome da branch> <posicao do stash>
 git config --global alias.ll 'log --oneline'
 git config --global --unset alias.ll
 
+#reverter uma alteração / reverter a reversao
+git revert HEAD 
+git revert HEAD --no-edit
+
+#apagando commit com reset
+git reset --hard HEAD~1
+
 ----------------
 gerar chave SSH
 ----------------
