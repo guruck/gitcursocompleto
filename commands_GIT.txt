@@ -191,6 +191,10 @@ git reset --mixed HEAD~1
 #as alterações dos commits vão para area de preparação
 git reset --soft HEAD~1
 
+##Sobrescrevendo remoto com o local PERIGO!!
+git push --force
+
+
 ----------------
 gerar chave SSH
 ----------------
