@@ -195,6 +195,7 @@ git reset --soft HEAD~1
 git push --force
 git push --force-with-lease
 
+#gerando um novo commit para entender o rebase
 git rebase
 
 ----------------
