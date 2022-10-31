@@ -195,6 +195,7 @@ git reset --soft HEAD~1
 git push --force
 git push --force-with-lease
 
+git rebase
 
 ----------------
 gerar chave SSH
