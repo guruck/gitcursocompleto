@@ -193,6 +193,7 @@ git reset --soft HEAD~1
 
 ##Sobrescrevendo remoto com o local PERIGO!!
 git push --force
+git push --force-with-lease
 
 
 ----------------
