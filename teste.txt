@@ -4,7 +4,8 @@ commit em outra HEAD
 resolvido, adicionado os dois comentarios conflitantes e mais uma anotação aqui
 
 ----------
-
+forçando alteracao 2 local
+----------
 
 INSERT INTO `db_teste_base`.`owners` (`status_conta`,`login`,`sistema`,`instancia`,`cod_responsavel`,`nome_responsavel`,`tipo_class`,`sigla`,`cobrar`,`motivo`,`indicador`,`mes`) VALUES ('regular','teste','windows','dominio.homol','123456','tomas edson','tipo C','CRC','NÃO','conta do meu truta','SIM',8),('irregular','tomate','windows','dominio.dev','321456','patati patata','tipo D','LDL','NÃO','excessão','NÃO',8)
 ;
